@@ -1,0 +1,39 @@
+{
+  "skill_id": "code.execute.v1",
+  "name": "Code Executor",
+  "description": "Executes sandboxed Python code snippets and returns output",
+  "category": "code",
+  "owner": "ai-platform-team",
+  "version": "1.0.0",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "code": { "type": "string", "description": "Python code to execute" },
+      "timeout_s": { "type": "integer", "description": "Execution timeout in seconds", "default": 5 }
+    },
+    "required": ["code"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "stdout": { "type": "string" },
+      "stderr": { "type": "string" },
+      "exit_code": { "type": "integer" },
+      "success": { "type": "boolean" }
+    }
+  },
+  "execution_mode": "local",
+  "permissions": ["execute:code"],
+  "risk_level": "medium",
+  "tags": ["code", "execute", "python"],
+  "dependencies": [],
+  "status": "published",
+  "health_status": "healthy",
+  "sla_targets": {
+    "p50_ms": 1000,
+    "p99_ms": 5000,
+    "timeout_ms": 15000,
+    "availability_pct": 99.5
+  },
+  "audit_classification": "enhanced"
+}

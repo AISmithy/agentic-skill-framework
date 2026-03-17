@@ -1,0 +1,47 @@
+{
+  "skill_id": "web.search.v1",
+  "name": "Web Search",
+  "description": "Searches the web and returns ranked results",
+  "category": "search",
+  "owner": "ai-platform-team",
+  "version": "1.0.0",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "query": { "type": "string", "description": "Search query" },
+      "max_results": { "type": "integer", "description": "Maximum results to return", "default": 5 }
+    },
+    "required": ["query"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "results": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "snippet": { "type": "string" },
+            "url": { "type": "string" }
+          }
+        }
+      },
+      "total_found": { "type": "integer" }
+    }
+  },
+  "execution_mode": "remote_api",
+  "permissions": ["read:web"],
+  "risk_level": "low",
+  "tags": ["search", "web", "retrieval"],
+  "dependencies": [],
+  "status": "published",
+  "health_status": "healthy",
+  "sla_targets": {
+    "p50_ms": 500,
+    "p99_ms": 2000,
+    "timeout_ms": 10000,
+    "availability_pct": 99.0
+  },
+  "audit_classification": "standard"
+}

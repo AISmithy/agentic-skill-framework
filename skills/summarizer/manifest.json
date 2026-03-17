@@ -1,0 +1,38 @@
+{
+  "skill_id": "doc.summarize.v1",
+  "name": "Document Summarizer",
+  "description": "Summarizes text content and extracts key points",
+  "category": "knowledge-processing",
+  "owner": "ai-platform-team",
+  "version": "1.0.0",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "text": { "type": "string", "description": "Text content to summarize" },
+      "max_length": { "type": "integer", "description": "Max summary length in characters", "default": 500 }
+    },
+    "required": ["text"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "summary": { "type": "string" },
+      "key_points": { "type": "array", "items": { "type": "string" } },
+      "word_count": { "type": "integer" }
+    }
+  },
+  "execution_mode": "local",
+  "permissions": [],
+  "risk_level": "low",
+  "tags": ["summary", "document", "nlp", "knowledge-processing"],
+  "dependencies": [],
+  "status": "published",
+  "health_status": "healthy",
+  "sla_targets": {
+    "p50_ms": 200,
+    "p99_ms": 1000,
+    "timeout_ms": 5000,
+    "availability_pct": 99.9
+  },
+  "audit_classification": "standard"
+}
