@@ -18,7 +18,7 @@ class VectorStore:
         return {w: c / total for w, c in freq.items()}
 
     def _cosine_similarity(self, v1: dict, v2: dict) -> float:
-        dot = sum(v1.get(k, 0) * v2.get(k, 0) for k in v2)
+        dot = sum(v1.get(k, 0) * v2.get(k, 0) for k in set(v1.keys()) | set(v2.keys()))
         mag1 = math.sqrt(sum(x * x for x in v1.values()))
         mag2 = math.sqrt(sum(x * x for x in v2.values()))
         if mag1 == 0 or mag2 == 0:

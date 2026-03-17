@@ -92,7 +92,7 @@ class TestAuditLogger:
     def test_export_json(self):
         logger = AuditLogger()
         logger.log("user1", "act", "res", "ok")
-        exported = logger.export("json")
+        exported = logger.export(export_format="json")
         data = json.loads(exported)
         assert len(data) == 1
         assert data[0]["user_id"] == "user1"

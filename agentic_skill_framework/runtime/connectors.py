@@ -13,6 +13,13 @@ class Connector(ABC):
         pass
 
 class HttpConnector(Connector):
+    """Stub HTTP connector that returns mock responses.
+
+    This is a placeholder implementation intended for testing and local
+    development. Replace ``get`` and ``post`` with real HTTP calls (e.g.
+    via ``urllib.request``) when connecting to live services.
+    """
+
     def __init__(self, base_url: str = ""):
         self.base_url = base_url
 

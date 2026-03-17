@@ -29,7 +29,7 @@ class AuditLogger:
             events = [e for e in events if e.action == action]
         return events[:limit]
 
-    def export(self, format: str = "json") -> str:
+    def export(self, export_format: str = "json") -> str:
         return json.dumps([dataclasses.asdict(e) for e in self._events])
 
     def clear(self) -> None:
