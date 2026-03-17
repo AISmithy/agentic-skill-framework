@@ -18,6 +18,9 @@ class SkillRegistry:
     def find_by_tag(self, tag: str) -> list[Skill]:
         return [s for s in self._skills.values() if tag in s.metadata.tags]
 
+    def count(self) -> int:
+        return len(self._skills)
+
     def unregister(self, name: str) -> bool:
         if name in self._skills:
             del self._skills[name]

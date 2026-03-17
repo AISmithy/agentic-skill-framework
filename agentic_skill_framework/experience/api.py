@@ -54,7 +54,7 @@ class AgentAPI:
         return {"status": "registered", "name": skill.metadata.name}
 
     def health(self) -> dict:
-        return {"status": "ok", "skills_registered": len(self.registry._skills)}
+        return {"status": "ok", "skills_registered": self.registry.count()}
 
 
 class CLI:

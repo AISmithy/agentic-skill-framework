@@ -21,7 +21,7 @@ class Executor:
         for attempt in range(max_retries + 1):
             try:
                 if attempt > 0:
-                    time.sleep(0.01 * (2 ** attempt))
+                    time.sleep(0.01 * (2 ** (attempt - 1)))
                 
                 def _run():
                     if self.circuit_breaker:

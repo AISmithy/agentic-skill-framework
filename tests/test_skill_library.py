@@ -112,6 +112,15 @@ class TestDependencyResolver:
         resolver = DependencyResolver()
         assert resolver.validate("parent", reg) is True
 
+    def test_resolve_transitive_deps(self):
+        reg = SkillRegistry()
+        reg.register(TestSkill("c"))
+        reg.register(TestSkill("b", deps=["c"]))
+        reg.register(TestSkill("a", deps=["b"]))
+        resolver = DependencyResolver()
+        result = resolver.resolve("a", reg)
+        assert result.index("c") < result.index("b") < result.index("a")
+
     def test_circular_dep(self):
         reg = SkillRegistry()
         reg.register(TestSkill("a", deps=["b"]))
